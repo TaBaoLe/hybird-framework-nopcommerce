@@ -18,6 +18,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 	private long longTimeout = 30;
 	private long shortTimeout = 5;
+	
+	public static BasePage getBasePage() {
+		return new BasePage();
+	}
 	// open url
 	public void openPageUrl(WebDriver driver, String url) {
 		driver.get(url);
