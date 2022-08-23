@@ -13,40 +13,18 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BasePage;
+import commons.BaseTest;
 import pageObject.LoginPageObject;
 
-public class User_02_Login extends BasePage{
+public class User_02_Login extends BaseTest{
 	private WebDriver driver;
-	private String projectPath = System.getProperty("user.dir");
 	private LoginPageObject loginPageObject;
 	private String validEmail, unRegisterEmail, correctPassword, wrongPassword;
 	
 	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver.exe");
-		driver = new FirefoxDriver();
-		switch (browserName) {
-		case "firefox":
-			System.out.println("Run on" + browserName);
-			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver.exe");
-			driver = new FirefoxDriver();
-			break;
-		case "chrome":
-			System.out.println("run on " +  browserName);
-			System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver.exe");
-			driver = new ChromeDriver();
-			break;
-		case "edge":
-			System.out.println("run on " +  browserName);
-			System.setProperty("webdriver.edge.driver", projectPath + "/browserDrivers/msedgedriver.exe");
-			driver = new EdgeDriver();
-			break;
-		default:
-			break;
-		}
-			
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	public void beforeClass(String browserName) {	
+		driver = MultiBrowser(browserName);
 		loginPageObject = new LoginPageObject(driver);
 		validEmail = "test@gmail.com";
 		unRegisterEmail = "abc@gmail.com";
@@ -80,8 +58,7 @@ public class User_02_Login extends BasePage{
 		System.out.println("Login 03-Step 2: Click to login button");
 		loginPageObject.clickToLoginButton();
 		System.out.println("Login 03-Step 3: Verify error messgae");
-		String text = "Login was unsuccessful. Please correct the errors and try again.\n"
-				+ "No customer account found";
+		String text = "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found";
 		Assert.assertEquals(text,loginPageObject.getErrorMessageUnregisterAtEmailTextBox());
 	}
 	
@@ -92,8 +69,7 @@ public class User_02_Login extends BasePage{
 		System.out.println("Login 04-Step 2: Click to login button");
 		loginPageObject.clickToLoginButton();
 		System.out.println("Login 04-Step 3: Verify error messgae");
-		String text = "Login was unsuccessful. Please correct the errors and try again.\n"
-				+ "No customer account found";
+		String text = "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect";
 		Assert.assertEquals(text,loginPageObject.getErrorMessageUnregisterAtEmailTextBox());
 	}
 	
@@ -106,8 +82,7 @@ public class User_02_Login extends BasePage{
 		System.out.println("Login 05-Step 3: Click to login button");
 		loginPageObject.clickToLoginButton();
 		System.out.println("Login 05-Step 3: Verify error messgae");
-		String text = "Login was unsuccessful. Please correct the errors and try again.\n"
-				+ "No customer account found";
+		String text = "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect";
 		Assert.assertEquals(text,loginPageObject.getErrorMessageUnregisterAtEmailTextBox());
 	}
 	//Regist user first

@@ -14,42 +14,20 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BasePage;
+import commons.BaseTest;
 import pageObject.HomePageObject;
 import pageObject.RegisterPageObject;
 
-public class User_01_Register extends BasePage {
+public class User_01_Register extends BaseTest {
 	private WebDriver driver;
-	private String projectPath = System.getProperty("user.dir");
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private String firstName, invalidEmail, lastName, email, password, confirmPassword, passwordLessThan6, randomEmail;
 
-	//@Parameters("browser")
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass() {
-		//System.out.println("run on " +  browserName);
-		System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver.exe");
-		driver = new ChromeDriver();
-//		switch (browserName) {
-//		case "firefox":
-//			System.out.println("run on " +  browserName);
-//			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver.exe");
-//			driver = new FirefoxDriver();
-//			break;
-//		case "chrome":
-//			System.out.println("run on " +  browserName);
-//			System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver.exe");
-//			driver = new ChromeDriver();
-//			break;
-//		case "edge":
-//			System.out.println("run on " +  browserName);
-//			System.setProperty("webdriver.edge.driver", projectPath + "/browserDrivers/msedgedriver.exe");
-//			driver = new EdgeDriver();
-//			break;
-//		default:
-//			break;
-//		}
-		
+	public void beforeClass(String browserName) {
+		driver = MultiBrowser(browserName);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		homePage = new HomePageObject(driver);
 		registerPage = new RegisterPageObject(driver);
