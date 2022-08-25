@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 
 import commons.BasePage;
 import commons.BaseTest;
+import commons.GlobalConstants;
 import pageObject.HomePageObject;
 import pageObject.RegisterPageObject;
 
@@ -22,7 +23,7 @@ public class User_01_Register extends BaseTest {
 	private WebDriver driver;
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
-	private String firstName, invalidEmail, lastName, email, password, confirmPassword, passwordLessThan6, randomEmail;
+	private String firstName, invalidEmail, lastName, passwordLessThan6, randomEmail;
 
 	@Parameters("browser")
 	@BeforeClass
@@ -33,9 +34,6 @@ public class User_01_Register extends BaseTest {
 		registerPage = new RegisterPageObject(driver);
 		firstName = "Automation";
 		lastName = "FC";
-		email = "test@gmail.com";
-		password = "1qaz2wsx";
-		confirmPassword = "1qaz2wsx";
 		passwordLessThan6 = "123";
 		invalidEmail = "email";
 		driver.get("https://demo.nopcommerce.com");
@@ -51,11 +49,8 @@ public class User_01_Register extends BaseTest {
 		registerPage.clickToRegisterButton();
 
 		System.out.println("Register_01-Step 03: Verify error message displayed");
-		Assert.assertEquals(registerPage.getErrorMessageAtFristnameTextbox(), "First name is required.");
-		Assert.assertEquals(registerPage.getErrorMessageAtLastnameTextbox(), "Last name is required.");
-		Assert.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Email is required.");
-		Assert.assertEquals(registerPage.getErrorMessageAtPasswordTextbox(), "Password is required.");
-		Assert.assertEquals(registerPage.getErrorMessageAtConfirmPasswordTextbox(), "Password is required.");
+		registerPage.verifyMessgaeDisplayed();
+		
 	}
 
 	@Test
@@ -67,8 +62,8 @@ public class User_01_Register extends BaseTest {
 		registerPage.inputToFirstnameTextBox(firstName);
 		registerPage.inputToLastnameTextBox(lastName);
 		registerPage.inputToEmailTextBox(invalidEmail);
-		registerPage.inputToPasswordTextBox(password);
-		registerPage.inputToConfirmPasswordTextBox(confirmPassword);
+		registerPage.inputToPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
+		registerPage.inputToConfirmPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
 
 		System.out.println("Register_02-Step 03: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -86,14 +81,15 @@ public class User_01_Register extends BaseTest {
 		registerPage.inputToFirstnameTextBox(firstName);
 		registerPage.inputToLastnameTextBox(lastName);
 		registerPage.inputToEmailTextBox(randomEmail);
-		registerPage.inputToPasswordTextBox(password);
-		registerPage.inputToConfirmPasswordTextBox(confirmPassword);
+		registerPage.inputToPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
+		registerPage.inputToConfirmPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
 
 		System.out.println("Register_03-Step 03: Click to Register button");
 		registerPage.clickToRegisterButton();
 
 		System.out.println("Register_03-Step 04: Verify register successfull message");
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		
 		System.out.println("Register_03-Step 05: Log out");
 		registerPage.logOut();
 	}
@@ -106,9 +102,9 @@ public class User_01_Register extends BaseTest {
 		System.out.println("Register_04-Step 02: Input detail");
 		registerPage.inputToFirstnameTextBox(firstName);
 		registerPage.inputToLastnameTextBox(lastName);
-		registerPage.inputToEmailTextBox(email);
-		registerPage.inputToPasswordTextBox(password);
-		registerPage.inputToConfirmPasswordTextBox(confirmPassword);
+		registerPage.inputToEmailTextBox(GlobalConstants.LOGIN_EMAIL);
+		registerPage.inputToPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
+		registerPage.inputToConfirmPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
 
 		System.out.println("Register_04-Step 03: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -146,7 +142,7 @@ public class User_01_Register extends BaseTest {
 		registerPage.inputToFirstnameTextBox(firstName);
 		registerPage.inputToLastnameTextBox(lastName);
 		registerPage.inputToEmailTextBox(randomEmail);
-		registerPage.inputToPasswordTextBox(password);
+		registerPage.inputToPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
 		registerPage.inputToConfirmPasswordTextBox(passwordLessThan6);
 
 		System.out.println("Register_06-Step 03: Click to Register button");

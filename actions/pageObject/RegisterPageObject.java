@@ -1,6 +1,7 @@
 package pageObject;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import commons.BasePage;
 import pageUIs.RegisterPageUI;
@@ -79,6 +80,14 @@ public class RegisterPageObject extends BasePage {
 		String text = getElementText(driver,RegisterPageUI.PASSWORD_FIRST_LINE_TEXT)
 				.concat(" " + getElementText(driver,RegisterPageUI.PASSWORD_SECOND_LINE_TEXT));
 		return text;
+	}
+
+	public void verifyMessgaeDisplayed() {
+		Assert.assertEquals(getErrorMessageAtFristnameTextbox(), "First name is required.");
+		Assert.assertEquals(getErrorMessageAtLastnameTextbox(), "Last name is required.");
+		Assert.assertEquals(getErrorMessageAtEmailTextbox(), "Email is required.");
+		Assert.assertEquals(getErrorMessageAtPasswordTextbox(), "Password is required.");
+		Assert.assertEquals(getErrorMessageAtConfirmPasswordTextbox(), "Password is required.");
 	}
 
 }

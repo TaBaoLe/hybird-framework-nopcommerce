@@ -32,6 +32,7 @@ public class BaseTest {
 			throw new RuntimeException("Brose name invalid");
 		}
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 		return driver;
 	}
 }

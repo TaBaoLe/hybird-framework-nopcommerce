@@ -14,15 +14,32 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import pageObject.HomePageObject;
+import pageObject.LoginPageObject;
+import pageUIs.MyAccountUI;
 
 public class BasePage {
 	private long longTimeout = 30;
 	private long shortTimeout = 5;
+	private MyAccountUI myAccountUI;
+	private LoginPageObject loginPageObject;
+	private HomePageObject homePageObject;
 	
 	public static BasePage getBasePage() {
 		return new BasePage();
 	}
-	// open url
+	
+	public void loginToMyAccount(WebDriver driver,String email, String pass) {
+		homePageObject = new HomePageObject(driver);
+		loginPageObject = new LoginPageObject(driver);
+		homePageObject.clickToLoginLink();
+		loginPageObject.inputEmail(email);
+		loginPageObject.inputPassword(pass);
+		loginPageObject.clickToLoginButton();
+	}
+	
 	public void openPageUrl(WebDriver driver, String url) {
 		driver.get(url);
 	}
@@ -118,6 +135,7 @@ public class BasePage {
 
 	
 	public void clickToElement(WebDriver driver,String xpathLocator) {
+		waitForElementClickable(driver, xpathLocator);
 		getWebElement(driver,xpathLocator).click();
 	}
 	
@@ -182,6 +200,11 @@ public class BasePage {
 		return Color.fromString(rgbaValue).asHex();
 	}
 	
+	public void assertEqual(WebDriver driver,String expected, String result) {
+		Assert.assertEquals(expected, result);
+	}
+	
+	
 	public int getElementSize(WebDriver driver, String xpathLocator) {
 		return getListWebElement(driver,xpathLocator).size();
 	}
@@ -192,7 +215,7 @@ public class BasePage {
 			element.click();
 		}
 	}
-	
+		
 	public void uncheckToDefaultCheckbox(WebDriver driver, String xpathLocator) {
 		WebElement element = getWebElement(driver, xpathLocator);
 		if(element.isSelected()) {
