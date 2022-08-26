@@ -14,18 +14,11 @@ import pageObject.LoginPageObject;
 
 public class User_02_Login extends BaseTest{
 	private WebDriver driver;
-	private LoginPageObject loginPageObject;
-	private HomePageObject homePageObject;
-	public String unRegisterEmail, wrongPassword;
 	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {	
 		driver = MultiBrowser(browserName);
-		loginPageObject = new LoginPageObject(driver);
-		homePageObject = new HomePageObject(driver);
-		unRegisterEmail = "abc@gmail.com";
-		wrongPassword = "zxccvvvva";
 		homePageObject.clickToLoginLink();
 	}
 

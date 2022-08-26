@@ -72,7 +72,8 @@ public class RegisterPageObject extends BasePage {
 		return getElementText(driver, RegisterPageUI.EXITS_EMAIL_ERROR_TEXT);
 	}
 
-	public void logOut() {
+	public void logOut() throws InterruptedException {
+		Thread.sleep(1000);
 		clickToElement(driver,RegisterPageUI.LOG_OUT_LINK);
 	}
 
