@@ -8,6 +8,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.nopcommerce.data.UserData;
+
 import commons.BaseTest;
 import commons.GlobalConstants;
 
@@ -38,9 +40,9 @@ public class User_01_Register extends BaseTest {
 		homePageObject.clickToRegisterLink();
 
 		System.out.println("Register_02-Step 02: Input detail");
-		registerPage.inputToFirstnameTextBox(firstName);
-		registerPage.inputToLastnameTextBox(lastName);
-		registerPage.inputToEmailTextBox(invalidEmail);
+		registerPage.inputToFirstnameTextBox(UserData.firstName);
+		registerPage.inputToLastnameTextBox(UserData.lastName);
+		registerPage.inputToEmailTextBox(UserData.invalidEmail);
 		registerPage.inputToPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
 		registerPage.inputToConfirmPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
 
@@ -57,9 +59,9 @@ public class User_01_Register extends BaseTest {
 		homePageObject.clickToRegisterLink();
 
 		System.out.println("Register_03-Step 02: Input detail");
-		registerPage.inputToFirstnameTextBox(firstName);
-		registerPage.inputToLastnameTextBox(lastName);
-		registerPage.inputToEmailTextBox(randomEmail);
+		registerPage.inputToFirstnameTextBox(UserData.firstName);
+		registerPage.inputToLastnameTextBox(UserData.lastName);
+		registerPage.inputToEmailTextBox(UserData.randomEmail);
 		registerPage.inputToPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
 		registerPage.inputToConfirmPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
 
@@ -79,9 +81,9 @@ public class User_01_Register extends BaseTest {
 		homePageObject.clickToRegisterLink();
 
 		System.out.println("Register_04-Step 02: Input detail");
-		registerPage.inputToFirstnameTextBox(firstName);
-		registerPage.inputToLastnameTextBox(lastName);
-		registerPage.inputToEmailTextBox(randomEmail);
+		registerPage.inputToFirstnameTextBox(UserData.firstName);
+		registerPage.inputToLastnameTextBox(UserData.lastName);
+		registerPage.inputToEmailTextBox(UserData.randomEmail);
 		registerPage.inputToPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
 		registerPage.inputToConfirmPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
 
@@ -98,11 +100,11 @@ public class User_01_Register extends BaseTest {
 		homePageObject.clickToRegisterLink();
 
 		System.out.println("Register_05-Step 02: Input detail");
-		registerPage.inputToFirstnameTextBox(firstName);
-		registerPage.inputToLastnameTextBox(lastName);
-		registerPage.inputToEmailTextBox(randomEmail);
-		registerPage.inputToPasswordTextBox(passwordLessThan6);
-		registerPage.inputToConfirmPasswordTextBox(passwordLessThan6);
+		registerPage.inputToFirstnameTextBox(UserData.firstName);
+		registerPage.inputToLastnameTextBox(UserData.lastName);
+		registerPage.inputToEmailTextBox(UserData.randomEmail);
+		registerPage.inputToPasswordTextBox(UserData.passwordLessThan6);
+		registerPage.inputToConfirmPasswordTextBox(UserData.passwordLessThan6);
 
 		System.out.println("Register_05-Step 03: Click to Register button");
 		registerPage.clickToRegisterButton();
@@ -118,11 +120,11 @@ public class User_01_Register extends BaseTest {
 		homePageObject.clickToRegisterLink();
 
 		System.out.println("Register_06-Step 02: Input detail");
-		registerPage.inputToFirstnameTextBox(firstName);
-		registerPage.inputToLastnameTextBox(lastName);
-		registerPage.inputToEmailTextBox(randomEmail);
+		registerPage.inputToFirstnameTextBox(UserData.firstName);
+		registerPage.inputToLastnameTextBox(UserData.lastName);
+		registerPage.inputToEmailTextBox(UserData.randomEmail);
 		registerPage.inputToPasswordTextBox(GlobalConstants.LOGIN_PASSWORD);
-		registerPage.inputToConfirmPasswordTextBox(passwordLessThan6);
+		registerPage.inputToConfirmPasswordTextBox(UserData.passwordLessThan6);
 
 		System.out.println("Register_06-Step 03: Click to Register button");
 		registerPage.clickToRegisterButton();

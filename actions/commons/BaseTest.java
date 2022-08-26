@@ -1,6 +1,5 @@
 package commons;
 
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -20,9 +19,6 @@ public class BaseTest {
 	protected RegisterPageObject registerPage;
 	protected LoginPageObject loginPageObject;
 	protected MyAccountObject myAccountObject;
-	protected String firstName, invalidEmail, lastName, passwordLessThan6, randomEmail;
-	protected String unRegisterEmail, wrongPassword;
-
 
 
 	protected WebDriver MultiBrowser(String browserName) {
@@ -51,21 +47,10 @@ public class BaseTest {
 		homePageObject = new HomePageObject(driver);
 		registerPage = new RegisterPageObject(driver);
 		loginPageObject = new LoginPageObject(driver);
-		myAccountObject = new MyAccountObject(driver);
+		myAccountObject = new MyAccountObject(driver);		
 		
-		firstName = "Automation";
-		lastName = "FC";
-		passwordLessThan6 = "123";
-		invalidEmail = "email";
-		randomEmail = "test" + generateRandomNumber() + "@gmail.com";
-		
-		unRegisterEmail = "abc@gmail.com";
-		wrongPassword = "zxccvvvva";
 		return driver;
 	}
 	
-	public int generateRandomNumber() {
-		Random random = new Random();
-		return random.nextInt(9999);
-	}
+	
 }

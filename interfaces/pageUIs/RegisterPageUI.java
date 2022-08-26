@@ -17,5 +17,6 @@ public class RegisterPageUI {
 	public static final String LOG_OUT_LINK = "//a[text()='Log out']";
 	public static final String PASSWORD_FIRST_LINE_TEXT = "//span[@id='Password-error']/p";
 	public static final String PASSWORD_SECOND_LINE_TEXT = "//span[@id='Password-error']//li";
+	public static final String INPUT_SEARCH_FIELD = "//input[@id='small-searchterms']";
 
 }

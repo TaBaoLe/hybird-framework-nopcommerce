@@ -3,13 +3,14 @@ package pageObject;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import com.nopcommerce.data.ProductData;
+
 import commons.BasePage;
 import pageUIs.RegisterPageUI;
 
 public class RegisterPageObject extends BasePage {
 	private WebDriver driver;
 	private RegisterPageUI registerPageUI = new RegisterPageUI();
-	
 	
 
 	public RegisterPageObject(WebDriver driver) {
@@ -89,6 +90,11 @@ public class RegisterPageObject extends BasePage {
 		Assert.assertEquals(getErrorMessageAtEmailTextbox(), "Email is required.");
 		Assert.assertEquals(getErrorMessageAtPasswordTextbox(), "Password is required.");
 		Assert.assertEquals(getErrorMessageAtConfirmPasswordTextbox(), "Password is required.");
+	}
+
+	public void inputDataToSearchField(String data) {
+		sendkeyToElement(driver, RegisterPageUI.INPUT_SEARCH_FIELD,data);
+
 	}
 
 }

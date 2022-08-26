@@ -7,6 +7,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.nopcommerce.data.UserData;
+
 import commons.BaseTest;
 import commons.GlobalConstants;
 import pageObject.HomePageObject;
@@ -46,7 +48,7 @@ public class User_02_Login extends BaseTest{
 	@Test
 	public void Login_03_Login_With_Unregister_Email() {
 		System.out.println("Login 03-Step 1: Input unregister email");
-		loginPageObject.inputEmail(unRegisterEmail);
+		loginPageObject.inputEmail(UserData.unRegisterEmail);
 		
 		System.out.println("Login 03-Step 2: Click to login button");
 		loginPageObject.clickToLoginButton();
@@ -75,7 +77,7 @@ public class User_02_Login extends BaseTest{
 		loginPageObject.inputEmail(GlobalConstants.LOGIN_EMAIL);
 		
 		System.out.println("Login 05-Step 2: Input wrong password");
-		loginPageObject.inputPassword(wrongPassword);
+		loginPageObject.inputPassword(UserData.wrongPassword);
 		
 		System.out.println("Login 05-Step 3: Click to login button");
 		loginPageObject.clickToLoginButton();

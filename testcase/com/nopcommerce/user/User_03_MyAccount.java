@@ -118,7 +118,7 @@ public class User_03_MyAccount extends BaseTest {
 
 	@AfterClass
 	public void afterClass() {
-		// driver.quit();
+	 driver.quit();
 	}
 	
 	
